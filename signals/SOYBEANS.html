@@ -1,0 +1,64 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Soybeans signals</title><link rel='icon' href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23010E29'/%3E%3Cpath d='M18 5h6l-10 22h-6z' fill='%2300CCFB'/%3E%3C/svg%3E"><link href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap' rel='stylesheet'><style>
+:root{--navy:#010E29;--blue:#1f7ab8;--slate:#8a9bb0;--rust:#c0502e;--paper:#e9eef4;--ink:#1d2430;--muted:#5d6878;--rule:#dfe5ec}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Lato,Carlito,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--blue)}main{max-width:1120px;margin:0 auto;padding:34px 24px 64px}h1{font-size:38px;font-weight:900;color:var(--navy);margin:0 0 8px;line-height:1.1}
+.lead{color:var(--muted);margin:0 0 22px;max-width:75ch}.links a{margin-right:18px;font-weight:700}
+h2{font-size:19px;color:var(--navy);margin:30px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:22px}
+.card{background:#fff;border:1px solid #c3cfdc;border-radius:12px;padding:18px 20px 14px;box-shadow:0 1px 2px rgba(27,58,82,.08),0 12px 28px rgba(27,58,82,.14)}
+.card h3{margin:0 0 2px;font-size:15px;color:var(--navy)}.card p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.src{font-size:12px;color:var(--muted);margin:6px 0 0}svg.chart{width:100%;height:auto;display:block;margin-top:8px}
+.att{display:grid;grid-template-columns:200px 1fr 46px 110px;gap:12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.att .bar{background:#eef3f8;border-radius:4px;height:10px}.att .bar i{display:block;height:10px;border-radius:4px;background:var(--blue)}
+.att em{font-style:normal;font-size:13px}.attx{margin:10px 0 0;font-size:14px}.up{color:#2e7d4f}.dn{color:var(--rust)}
+.scmap{border-radius:10px;border:1px solid #c3cfdc;margin-top:6px;background:#eef3f8}
+.maplo{margin:0;padding:20px;color:var(--muted);font-size:14px}
+.maplegend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);margin:10px 0 0}
+.maplegend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;color:var(--muted);font-size:13px;padding:0 8px 8px;border-bottom:2px solid var(--rule)}
+td{padding:9px 8px;border-bottom:1px solid var(--rule)}td.n,th.n{text-align:right}.empty{color:var(--muted)}
+.foot{color:var(--muted);font-size:13px;margin-top:28px}
+@media(max-width:700px){main{padding:22px 16px 48px}.grid{grid-template-columns:1fr}.att{grid-template-columns:1fr 60px 40px}.att em{display:none}}
+
+.band{background:#010E29;color:#fff;font-family:Lato,"Helvetica Neue",Arial,sans-serif}
+.band .in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.band .brand{display:flex;line-height:0}
+.band .nav{display:flex;gap:18px;font-size:15px;margin-left:8px;flex-wrap:wrap}
+.band .nav a{color:#c9d6ea;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;line-height:1.5}
+.band .nav a:hover{color:#fff}
+.band .nav a.on{color:#fff;border-bottom-color:#00CCFB}
+.band .mini{margin-left:auto;display:flex;gap:8px}
+.band .mini input{width:180px;padding:8px 12px;border-radius:8px;border:1px solid #2c3c5e;background:#0b1c40;color:#fff;font:inherit;font-size:15px}
+.band .mini input::placeholder{color:#8fa0bd}
+.band .mini button{padding:8px 14px;border-radius:8px;border:0;background:#00CCFB;color:#010E29;font:inherit;font-weight:900;font-size:14px;cursor:pointer}
+.band .mini button:hover{filter:brightness(1.12)}
+.band .mini input,.band .mini button{line-height:20px;height:38px;box-sizing:border-box}
+.band .in{min-height:66px}
+@media(max-width:860px){.band .in{padding:12px 16px}.band .mini{margin-left:0;width:100%}.band .mini input{flex:1;width:auto}
+ .band .nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;gap:16px;white-space:nowrap}}
+</style></head><body><header class='band'><div class='in'><a class='brand' href='http://127.0.0.1:8000/' aria-label='ALT/INFO search'><svg class='logo' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1797 298' width='144.7' height='24' role='img' aria-label='ALT/INFO'><title>ALT/INFO</title><path fill='#ffffff' fill-rule='evenodd' d='M1486,12 1297,12 1297,282 1361,282 1362,174 1475,174 1476,119 1363,119 1361,116 1361,71 1363,69 1486,69ZM1009,12 1009,282 1075,282 1076,121 1190,282 1260,282 1260,12 1193,12 1192,170 1076,12ZM899,12 898,282 967,282 967,12ZM498,12 498,68 575,69 575,282 643,282 643,69 722,68 722,12ZM327,12 326,281 527,282 527,222 396,221 396,12ZM131,12 76,126 5,282 78,282 103,230 223,230 248,282 320,282 310,255 197,12ZM163,86 199,173 198,176 130,176 127,174ZM1632,6 1606,11 1586,18 1570,26 1544,45 1528,62 1517,78 1510,92 1502,115 1498,137 1498,168 1503,193 1517,225 1540,254 1556,267 1584,282 1609,290 1631,293 1666,292 1700,283 1719,274 1743,257 1759,241 1774,219 1786,191 1792,160 1791,127 1787,108 1776,81 1759,56 1743,40 1721,25 1691,12 1661,6ZM1637,67 1652,67 1666,70 1679,75 1689,82 1706,100 1713,113 1717,125 1720,147 1719,162 1715,180 1708,195 1700,206 1689,217 1674,226 1647,232 1626,230 1612,225 1598,216 1586,204 1578,192 1572,178 1568,157 1568,143 1571,124 1577,109 1587,94 1605,78 1619,71Z'/><path fill='#00CCFB' d='M863,4 817,5 717,288 765,288Z'/></svg></a><nav class='nav' aria-label='Sections'><a href='http://127.0.0.1:8000/' class=''>Search</a><a href='http://127.0.0.1:8000/track' class=''>Track record</a><a href='../notebooks/03_event_betas.html' class=''>Event betas</a><a href='http://127.0.0.1:8000/dashboard' class=''>Dashboard</a><a href='../notebooks/07_monitors.html' class=''>Monitors</a></nav><form class='mini' role='search' onsubmit="var q=this.q.value.trim();if(q)location.href='http://127.0.0.1:8000/#'+encodeURIComponent(q);return false;"><input name='q' type='text' autocomplete='off' spellcheck='false' maxlength='40' placeholder='Ticker or commodity' aria-label='Ticker or commodity'><button type='submit'>Analyse</button></form></div></header><main><h1>Soybeans</h1><p class='lead'>Agriculture, Latin America. The history of every index we track for this name, how the prediction market odds moved and what people talk about. Data as of 10 November 2026.</p><p class='links'><span class='empty'>No event report for this name yet.</span></p><h2>Indices and odds</h2><div class='grid'><div class='card'><h3>Price, last 6 months (ZS=F)</h3><svg viewBox='0 0 520 170' class='chart' role='img'><g font-size='11' fill='#5d6878'><line x1='46' x2='462' y1='122.0' y2='122.0' stroke='#e6ebf1'/><text x='40' y='126.0' text-anchor='end'>1,128</text><line x1='46' x2='462' y1='78.0' y2='78.0' stroke='#e6ebf1'/><text x='40' y='82.0' text-anchor='end'>1,218</text><line x1='46' x2='462' y1='34.0' y2='34.0' stroke='#e6ebf1'/><text x='40' y='38.0' text-anchor='end'>1,309</text><text x='46' y='164'>13 May 26</text><text x='462' y='164' text-anchor='end'>10 Nov 26</text></g><polygon points='46.0,144 46.0,79.5 49.3,99.3 52.7,98.1 56.0,80.6 59.3,82.3 62.6,87.0 66.0,89.7 69.3,88.6 72.6,93.7 76.0,94.1 79.3,89.6 82.6,93.4 85.9,96.3 89.3,103.8 92.6,109.3 95.9,121.2 99.2,125.0 102.6,127.8 105.9,128.8 109.2,124.3 112.6,128.2 115.9,128.9 119.2,126.1 122.5,120.9 125.9,119.9 129.2,124.4 132.5,127.8 135.9,127.2 139.2,131.2 142.5,122.1 145.8,122.7 149.2,131.2 152.5,127.3 155.8,122.7 159.2,120.1 162.5,95.5 165.8,88.5 169.1,89.3 172.5,96.8 175.8,88.6 179.1,86.0 182.4,83.4 185.8,85.8 189.1,89.3 192.4,84.7 195.8,74.3 199.1,77.5 202.4,70.9 205.7,68.7 209.1,63.6 212.4,82.8 215.7,81.1 219.1,97.6 222.4,98.0 225.7,100.5 229.0,102.1 232.4,108.8 235.7,110.5 239.0,107.7 242.4,108.0 245.7,107.4 249.0,112.4 252.3,104.0 255.7,102.3 259.0,99.7 262.3,86.4 265.6,86.6 269.0,76.1 272.3,76.8 275.6,74.8 279.0,79.2 282.3,73.3 285.6,60.6 288.9,59.5 292.3,49.9 295.6,50.4 298.9,35.1 302.3,37.5 305.6,35.3 308.9,41.4 312.2,37.2 315.6,40.7 318.9,30.6 322.2,48.0 325.6,45.5 328.9,29.3 332.2,28.4 335.5,28.8 338.9,36.7 342.2,24.8 345.5,26.0 348.8,29.6 352.2,29.9 355.5,29.1 358.8,44.1 362.2,39.5 365.5,41.8 368.8,46.1 372.1,48.9 375.5,47.7 378.8,36.9 382.1,39.6 385.5,44.4 388.8,42.3 392.1,44.3 395.4,46.3 398.8,49.4 402.1,56.3 405.4,57.2 408.8,60.9 412.1,63.5 415.4,65.0 418.7,61.2 422.1,59.5 425.4,66.9 428.7,72.7 432.0,75.0 435.4,77.3 438.7,76.1 442.0,84.6 445.4,85.5 448.7,90.2 452.0,96.1 455.3,92.3 458.7,95.5 462.0,92.0 462.0,144' fill='#1f7ab8' opacity='.07'/><polyline points='46.0,79.5 49.3,99.3 52.7,98.1 56.0,80.6 59.3,82.3 62.6,87.0 66.0,89.7 69.3,88.6 72.6,93.7 76.0,94.1 79.3,89.6 82.6,93.4 85.9,96.3 89.3,103.8 92.6,109.3 95.9,121.2 99.2,125.0 102.6,127.8 105.9,128.8 109.2,124.3 112.6,128.2 115.9,128.9 119.2,126.1 122.5,120.9 125.9,119.9 129.2,124.4 132.5,127.8 135.9,127.2 139.2,131.2 142.5,122.1 145.8,122.7 149.2,131.2 152.5,127.3 155.8,122.7 159.2,120.1 162.5,95.5 165.8,88.5 169.1,89.3 172.5,96.8 175.8,88.6 179.1,86.0 182.4,83.4 185.8,85.8 189.1,89.3 192.4,84.7 195.8,74.3 199.1,77.5 202.4,70.9 205.7,68.7 209.1,63.6 212.4,82.8 215.7,81.1 219.1,97.6 222.4,98.0 225.7,100.5 229.0,102.1 232.4,108.8 235.7,110.5 239.0,107.7 242.4,108.0 245.7,107.4 249.0,112.4 252.3,104.0 255.7,102.3 259.0,99.7 262.3,86.4 265.6,86.6 269.0,76.1 272.3,76.8 275.6,74.8 279.0,79.2 282.3,73.3 285.6,60.6 288.9,59.5 292.3,49.9 295.6,50.4 298.9,35.1 302.3,37.5 305.6,35.3 308.9,41.4 312.2,37.2 315.6,40.7 318.9,30.6 322.2,48.0 325.6,45.5 328.9,29.3 332.2,28.4 335.5,28.8 338.9,36.7 342.2,24.8 345.5,26.0 348.8,29.6 352.2,29.9 355.5,29.1 358.8,44.1 362.2,39.5 365.5,41.8 368.8,46.1 372.1,48.9 375.5,47.7 378.8,36.9 382.1,39.6 385.5,44.4 388.8,42.3 392.1,44.3 395.4,46.3 398.8,49.4 402.1,56.3 405.4,57.2 408.8,60.9 412.1,63.5 415.4,65.0 418.7,61.2 422.1,59.5 425.4,66.9 428.7,72.7 432.0,75.0 435.4,77.3 438.7,76.1 442.0,84.6 445.4,85.5 448.7,90.2 452.0,96.1 455.3,92.3 458.7,95.5 462.0,92.0' fill='none' stroke='#1f7ab8' stroke-width='2'/><circle cx='462.0' cy='92.0' r='3.5' fill='#1f7ab8'/><text x='469.0' y='96.0' font-size='12' font-weight='700' fill='#1f7ab8'>1,190</text></svg><p></p><p class='src'>Source: Yahoo Finance</p></div></div><h2>Attention on X and Stocktwits</h2><div class='card'><p class='empty'>No attention data for this name yet.</p></div><h2>Supply chain map and live alerts</h2><div class='card'>
+<div id='scmap8' class='scmap' style='height:330px'><p class='maplo'>Loading the map (needs an internet connection). The places are listed below.</p></div>
+<script>(function(){
+var P=[{"n": "Mato Grosso", "r": "Growing region", "c": "Brazil", "la": -13.0, "lo": -56.0, "col": "#2e8b57", "a": ""}, {"n": "Illinois", "r": "Growing region", "c": "United States", "la": 40.0, "lo": -89.0, "col": "#2e8b57", "a": ""}, {"n": "Rosario", "r": "Growing region", "c": "Argentina", "la": -32.95, "lo": -60.65, "col": "#2e8b57", "a": ""}, {"n": "Santos", "r": "Export port", "c": "Brazil", "la": -23.96, "lo": -46.33, "col": "#7a5aa8", "a": ""}];
+function go(){
+ document.getElementById('scmap8').innerHTML='';
+ var m=L.map('scmap8',{scrollWheelZoom:false,worldCopyJump:true});
+ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:9,
+   attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(m);
+ var b=[];
+ P.forEach(function(p){
+  if(p.a) L.circleMarker([p.la,p.lo],{radius:13,color:'#c0502e',weight:3,fill:false}).addTo(m);
+  L.circleMarker([p.la,p.lo],{radius:7,color:'#fff',weight:2,fillColor:p.col,fillOpacity:1}).addTo(m)
+   .bindPopup('<b>'+p.n+'</b><br>'+p.r+', '+p.c+(p.a?'<br><b style="color:#c0502e">'+p.a+'</b>':''));
+  b.push([p.la,p.lo]);
+ });
+ if(b.length>1) m.fitBounds(b,{padding:[30,30],maxZoom:6}); else m.setView(b[0],5);
+}
+if(window.L){go();return;}
+var s=document.getElementById('leaflet-js');
+if(!s){
+ var c=document.createElement('link');c.rel='stylesheet';c.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(c);
+ s=document.createElement('script');s.id='leaflet-js';s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';document.head.appendChild(s);
+}
+s.addEventListener('load',go);
+})();</script><div class='maplegend'><span><i style='background:#7a5aa8'></i>Export port</span><span><i style='background:#2e8b57'></i>Growing region</span><span><i style='background:#fff;border:3px solid #c0502e'></i>Live alert</span></div><p class='empty'>No earthquake within 100 km or fire within 30 km of these sites in the last download.</p></div><p class='foot'>Satellite inputs, topic shares and output shares are illustrative prototype data. Not investment advice.</p></main></body></html>

@@ -1,0 +1,187 @@
+{
+ "_note": "Market snapshot used in the two sample previews of 9 Nov 2026. 'real' figures are copied from the sources listed in each preview; 'prototype' figures are illustrative platform outputs. The notebooks use live API data instead whenever data/raw exists.",
+ "nvda": {
+  "real": {
+   "price_close_2026-11-06": 186.64,
+   "record_high_oct_2026": 239.24,
+   "market_cap_tn": 4.5,
+   "analyst_target_avg": 323.45,
+   "q3_revenue_guidance_bn": 108.0,
+   "q3_revenue_guidance_band": 0.02,
+   "q3_revenue_consensus_bn": 108.8,
+   "q3_eps_consensus": 2.47,
+   "q3_gross_margin_guidance": 0.74,
+   "revenue_by_quarter_bn": {
+    "Q1 FY27": 81.6,
+    "Q2 FY27": 96.2,
+    "Q3 FY27 guidance": 108.0
+   },
+   "polymarket": {
+    "EPS above analyst consensus": 0.92,
+    "Stock closes above $200 the day after results": 0.38
+   },
+   "polymarket_beat_history": {
+    "2026-10-20": 0.85,
+    "2026-10-27": 0.88,
+    "2026-11-03": 0.9,
+    "2026-11-09": 0.92
+   },
+   "kalshi_mentions": {
+    "Rubin": 0.97,
+    "China": 0.85,
+    "Memory": 0.74
+   },
+   "stocktwits_bullish": {
+    "month_ago": 0.58,
+    "now": 0.41
+   },
+   "next_day_moves_preview": {
+    "Q3 FY25": 0.005,
+    "Q4 FY25": -0.085,
+    "Q1 FY26": 0.033,
+    "Q2 FY26": -0.008,
+    "Q3 FY26": -0.032,
+    "Q4 FY26": -0.055,
+    "Q1 FY27": -0.018,
+    "Q2 FY27": 0.087
+   },
+   "_next_day_moves_note": "As printed in the preview (source theta.md, 6 Nov 2026); recomputed from Yahoo prices when data/raw/prices.csv exists."
+  },
+  "prototype": {
+   "x_mentions_vs_90d": 1.8,
+   "x_topics": {
+    "Customer financing": 0.31,
+    "Memory costs & margins": 0.24,
+    "Rubin & demand": 0.22,
+    "China": 0.13,
+    "Other": 0.1
+   },
+   "x_tone": {
+    "Customer financing": "Negative",
+    "Memory costs & margins": "Negative",
+    "Rubin & demand": "Positive",
+    "China": "Mixed",
+    "Other": ""
+   },
+   "our_beat_probability": 0.9
+  }
+ },
+ "brent": {
+  "real": {
+   "brent_intraday_2026-11-09": 94.0,
+   "brent_close_2026-11-06": 98.32,
+   "brent_week_change": -0.16,
+   "brent_2026_closing_high": 118.03,
+   "brent_52w_low": 58.66,
+   "wti_2026-11-09": 88.09,
+   "murban_2026-11-09": 99.17,
+   "hormuz_flow_mbd": {
+    "Feb 2026 (pre-war)": 14.5,
+    "Sep 2026": 9.8,
+    "Oct 2026": 11.7
+   },
+   "ships_waiting": 490,
+   "attacks_since_6_oct": 18,
+   "kalshi_brent_above": {
+    "95.99": 0.52,
+    "97.99": 0.47
+   },
+   "kalshi_brent_above_13nov": {
+    "94.99": 0.59
+   },
+   "kalshi_hormuz_normal_by": {
+    "Dec '26": 0.02,
+    "Jan '27": 0.08,
+    "Feb '27": 0.15,
+    "Apr '27": 0.26,
+    "Jun '27": 0.34,
+    "Sep '27": 0.4,
+    "Dec '27": 0.5,
+    "Jan '28": 0.55
+   },
+   "polymarket": {
+    "US-Iran ceasefire begins by 30 Nov": 0.6,
+    "US-Iran Hormuz agreement by 31 Dec": 0.36,
+    "No return to normal traffic in 2026": 0.92,
+    "Hormuz traffic back to normal by 30 Nov": 0.04
+   },
+   "polymarket_wti_touch": {
+    "70": 0.12,
+    "75": 0.31,
+    "80": 0.6,
+    "85": 0.89,
+    "95": 0.44,
+    "100": 0.28,
+    "105": 0.19,
+    "110": 0.13
+   },
+   "eia_week_to_2026-10-30": {
+    "commercial_crude_mb": 409.8,
+    "crude_vs_5y": -0.04,
+    "distillates_vs_5y": -0.13,
+    "spr_yoy": -0.31,
+    "refinery_utilisation": 0.945
+   },
+   "eia_steo_2026-10-06": {
+    "Brent 4Q26, $/b": 105,
+    "Brent 2026 average, $/b": 96,
+    "Brent 2027 average, $/b": 84
+   },
+   "_eia_steo_note": "EIA Short-Term Energy Outlook released 6 Oct 2026 (forecast completed 1 Oct): https://www.eia.gov/outlooks/steo/report/global_oil.php"
+  },
+  "prototype": {
+   "scenarios": [
+    {
+     "name": "Deal signed, attacks stop",
+     "weight": 0.3,
+     "low": 86,
+     "high": 92
+    },
+    {
+     "name": "Talks continue, attacks continue",
+     "weight": 0.5,
+     "low": 95,
+     "high": 101
+    },
+    {
+     "name": "Talks collapse, fighting resumes",
+     "weight": 0.2,
+     "low": 105,
+     "high": null
+    }
+   ],
+   "x_topics": {
+    "US-Iran talks and deal": 0.41,
+    "Tanker attacks, Hormuz": 0.23,
+    "Fed, CPI and dollar": 0.12,
+    "OPEC+ policy": 0.09,
+    "US stocks and SPR": 0.07,
+    "Other": 0.08
+   },
+   "x_tone": {
+    "US-Iran talks and deal": "Bearish oil",
+    "Tanker attacks, Hormuz": "Bullish oil",
+    "Fed, CPI and dollar": "Bearish oil",
+    "OPEC+ policy": "Mixed",
+    "US stocks and SPR": "Bullish oil",
+    "Other": ""
+   }
+  }
+ },
+ "calls": [
+  {
+   "event": "NVDA Q3 FY27 EPS above consensus (17 Nov 2026)",
+   "ours": 0.9,
+   "market": 0.92,
+   "source_market": "Polymarket",
+   "outcome": null
+  },
+  {
+   "event": "Brent above $95.99 on 30 Nov 2026",
+   "ours": 0.62,
+   "market": 0.52,
+   "source_market": "Kalshi",
+   "outcome": null
+  }
+ ]
+}

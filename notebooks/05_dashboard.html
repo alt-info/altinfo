@@ -1,0 +1,278 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>ALT/INFO · Dashboard</title><link rel='icon' href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23010E29'/%3E%3Cpath d='M18 5h6l-10 22h-6z' fill='%2300CCFB'/%3E%3C/svg%3E"><link href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap' rel='stylesheet'><style>:root {
+  --navy: #1b3a52; --blue: #1f7ab8; --sky: #eef4fa; --ink: #1d2430; --muted: #5d6878;
+  --rule: #dde4ec; --bg: #f5f7fa; --card: #ffffff; --red: #c0502e; --green: #2e8b57;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font-family: "Lato", "Carlito", "Helvetica Neue", Arial, sans-serif; font-size: 15px; line-height: 1.55; }
+main { max-width: 1040px; margin: 0 auto; padding: 8px 24px 64px; }
+.hero { background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--blue); border-radius: 6px;
+        padding: 22px 26px; margin: 22px 0 18px; }
+.hero h1 { margin: 0 0 6px; color: var(--navy); font-size: 28px; letter-spacing: -.3px; }
+.hero p { margin: 0; color: var(--muted); max-width: 820px; }
+.hero .mode { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 700; letter-spacing: 1px;
+              padding: 3px 9px; border-radius: 3px; background: var(--sky); color: var(--blue); }
+section.cell { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 24px; margin: 0 0 14px; }
+section.cell.text { background: transparent; border: none; padding: 6px 2px 0; }
+h2 { color: var(--navy); font-size: 19px; margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--blue); }
+h3 { color: var(--blue); font-size: 16px; margin: 16px 0 6px; }
+p { margin: 0 0 10px; }
+strong { color: var(--navy); }
+code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; background: var(--sky); padding: 1px 5px; border-radius: 3px; }
+details.code { margin: 0 0 12px; }
+details.code summary { cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--muted);
+                       text-transform: uppercase; list-style: none; display: inline-block; padding: 3px 10px;
+                       border: 1px solid var(--rule); border-radius: 12px; }
+details.code summary::-webkit-details-marker { display: none; }
+details.code summary:before { content: "▸ "; }
+details.code[open] summary:before { content: "▾ "; }
+details.code pre { margin: 10px 0 0; padding: 12px 14px; background: #0f2233; color: #dbe7f3; border-radius: 5px;
+                   font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.5; overflow-x: auto; }
+.result { border-left: 3px solid var(--blue); background: var(--sky); padding: 10px 14px; margin: 8px 0 12px;
+          border-radius: 0 4px 4px 0; font-size: 14px; }
+.result div { padding: 2px 0; }
+.result .mode-line { color: var(--muted); font-size: 12px; }
+.result .verdict { font-weight: 800; color: var(--navy); }
+img.fig { display: block; max-width: 100%; margin: 6px auto 10px; }
+table.dataframe, .tbl table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 8px 0 12px;
+                              font-variant-numeric: tabular-nums; }
+table.dataframe th, .tbl th { background: var(--navy); color: #fff; font-weight: 600; text-align: left; padding: 7px 10px; border: none; }
+table.dataframe td, .tbl td { padding: 6px 10px; border: none; border-bottom: 1px solid var(--rule); }
+table.dataframe tbody tr:nth-child(even) td { background: #fafbfd; }
+table.dataframe tbody tr:hover td { background: var(--sky); }
+table.dataframe thead tr:not(:first-child) th { background: #2b4d68; }
+.tbl-wrap { overflow-x: auto; }
+ul, ol { padding-left: 22px; margin: 0 0 10px; }
+footer { max-width: 1040px; margin: 0 auto; padding: 0 24px 40px; color: var(--muted); font-size: 12px; }
+@media (max-width: 640px) { main { padding: 4px 14px 40px; } .hero h1 { font-size: 22px; } section.cell { padding: 14px; } }
+.bare{margin:0 0 6px 2px}
+table.dataframe tbody th{background:#f3f6f9;color:var(--navy);font-weight:700;text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule)}
+table.dataframe th,table.dataframe td{text-align:left;vertical-align:top}table.dataframe .n{text-align:right}
+table.dataframe thead th{white-space:nowrap}
+table.dataframe .nw,table.dataframe .n{white-space:nowrap}
+/* elevated look: tinted page, transparent sections, every table, chart and result is its own raised card */
+:root { --bg: #e4eaf1; }
+html, body { background: var(--bg); }
+section.cell { background: transparent; border: none; padding: 4px 0 6px; margin: 0 0 22px; }
+.hero { box-shadow: 0 10px 28px rgba(27, 58, 82, .14); border-color: #c8d3df; }
+.tbl-wrap, img.fig, .result {
+  background: #fff; border: 1px solid #c3cfdc; border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(27, 58, 82, .08), 0 10px 26px rgba(27, 58, 82, .13);
+}
+.tbl-wrap { padding: 0; margin: 12px 0 16px; overflow: hidden; overflow-x: auto; }
+.tbl-wrap table.dataframe { margin: 0; }
+.tbl-wrap table.dataframe th:first-child { border-top-left-radius: 9px; }
+.tbl-wrap table.dataframe th:last-child { border-top-right-radius: 9px; }
+img.fig { padding: 14px; margin: 12px auto 16px; box-sizing: content-box; max-width: calc(100% - 30px); }
+.result { border-left: 4px solid var(--blue); border-radius: 10px; padding: 12px 16px; margin: 12px 0 16px; background: #fff; }
+details.code summary { background: #fff; border-color: #c3cfdc; }
+section.cell.text h2 { border-bottom-color: var(--navy); }
+.bare{margin:0 0 10px 0 !important;padding:0}details.code{margin-left:0}
+/* plain html outputs (headings, custom blocks) are not cards */
+.raw { margin: 10px 0 14px; }
+/* ticker page */
+.tp { background: #fff; border: 1px solid #c3cfdc; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(27,58,82,.08), 0 12px 30px rgba(27,58,82,.14); }
+.tp-head { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;
+           padding: 22px 26px; background: var(--navy); color: #fff; }
+.tp-name { font-size: 28px; font-weight: 800; line-height: 1.1; }
+.tp-meta { font-size: 14px; color: #c9dbeb; margin-top: 4px; }
+.tp-stats { display: flex; gap: 26px; flex-wrap: wrap; }
+.tp-stats div { display: flex; flex-direction: column; align-items: flex-end; }
+.tp-stats span { font-size: 12px; color: #c9dbeb; }
+.tp-stats b { font-size: 20px; }
+.tp-stats .up { color: #8fd6a9; } .tp-stats .dn { color: #ffb39b; }
+.tp-body { display: grid; grid-template-columns: 1fr 300px; gap: 26px; padding: 22px 26px 26px; }
+.tp h4 { margin: 0 0 10px; font-size: 15px; color: var(--navy); }
+.tp-side h4 { margin-top: 18px; } .tp-side h4:first-child { margin-top: 0; }
+.tp .tbl-wrap { margin: 0; max-height: 520px; overflow-y: auto; }
+.tp table.dataframe thead th { position: sticky; top: 0; z-index: 1; }
+.venue { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.venue.Kalshi { background: #e3f0fa; color: var(--blue); } .venue.Polymarket { background: #f1e8fb; color: #6b3fa0; }
+.tp-gap { border: 1px solid #c3cfdc; border-radius: 8px; overflow: hidden; }
+.tp-gap div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 12px; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.tp-gap div:last-child { border-bottom: none; }
+.tp-gap span { color: var(--muted); } .tp-gap b { text-align: right; color: var(--navy); }
+.chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.chip { border: 1px solid #c3cfdc; border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; font-size: 14px; }
+.chip small { color: var(--muted); font-size: 12px; }
+.sigtags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sigtag { font-size: 13px; padding: 4px 10px; border-radius: 14px; background: var(--sky); color: var(--navy); }
+.tp-gap div.stack { flex-direction: column; gap: 2px; }
+.tp-gap div.stack b { text-align: left; }
+.up { color: #2e7d4f; } .dn { color: var(--red); }
+.empty { color: var(--muted); font-size: 14px; }
+@media (max-width: 860px) { .tp-body { grid-template-columns: 1fr; } .tp-stats div { align-items: flex-start; } }
+p.note { max-width: 86ch; margin: 2px 0 6px 4px; padding-left: 14px; border-left: 2px solid #9fb4c7;
+         color: #34404f; font-size: 14.5px; line-height: 1.6; }
+p.note b { color: var(--navy); }
+/* ticker page: full width sections */
+.tp-sec { padding: 20px 26px 24px; border-top: 1px solid var(--rule); }
+.tp-sec h4 { margin: 0 0 12px; }
+.tgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+.tcard { border: 1px solid #c3cfdc; border-radius: 10px; padding: 14px 16px 12px; background: #fff; }
+.tcard h5 { margin: 0; font-size: 14px; color: var(--navy); }
+.tcard p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+svg.chart { width: 100%; height: auto; display: block; margin-top: 6px; }
+.src { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.tp .tp-sec .tbl-wrap { max-height: none; margin-top: 12px; }
+.scmap { border-radius: 10px; border: 1px solid #c3cfdc; background: #eef3f8; }
+.maplegend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.maplegend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+details.sites, details.spec { margin-top: 10px; font-size: 13px; }
+details.sites summary, details.spec summary { cursor: pointer; color: var(--blue); font-weight: 700; }
+details.spec pre { background: #0f2233; color: #dbe7f3; padding: 10px 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; }
+.att { display: grid; grid-template-columns: 220px 1fr 48px 110px; gap: 12px; align-items: center; padding: 7px 0;
+       border-bottom: 1px solid var(--rule); font-size: 14px; }
+.att .bar { background: #eef3f8; border-radius: 4px; height: 10px; }
+.att .bar i { display: block; height: 10px; border-radius: 4px; background: var(--blue); }
+.att b { text-align: right; } .att em { font-style: normal; font-size: 13px; }
+.attx { margin: 10px 0 0; font-size: 14px; }
+.mbtn { font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 14px; border: 1px solid var(--blue); background: #fff;
+        color: var(--blue); cursor: pointer; }
+.mbtn:hover { background: var(--sky); }
+.tier { display: inline-block; vertical-align: middle; margin-left: 10px; font-size: 12px; font-weight: 700; letter-spacing: .5px;
+        padding: 3px 9px; border-radius: 10px; }
+.tier.inst { background: #2b5576; color: #fff; } .tier.free { background: #f2e3c6; color: #7a5410; }
+.locked { border: 1px dashed #b9c6d4; border-radius: 8px; padding: 12px 14px; background: #f6f8fb; display: flex; flex-direction: column;
+          gap: 2px; font-size: 14px; color: var(--muted); }
+.locked b { color: var(--navy); }
+@media (max-width: 700px) { .att { grid-template-columns: 1fr 50px 40px; } .att em { display: none; } .tp-sec { padding: 16px; } }
+.maplo { margin: 0; padding: 20px; color: var(--muted); font-size: 14px; }
+
+/* same look as the live app (web/style.css) */
+:root { --bg: #e9eef4; --navy: #010E29; --cyan: #00CCFB; --muted: #56627a; }
+html, body { background: var(--bg); }
+body { font-family: Lato, "Helvetica Neue", Arial, sans-serif; font-size: 16px; }
+main { max-width: 1120px; padding: 0 24px 56px; }
+.hero { background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 34px 0 10px; margin: 0 0 8px; }
+.hero h1 { font-size: 38px; font-weight: 900; color: var(--navy); letter-spacing: -.01em; line-height: 1.1; margin: 0 0 10px; }
+.hero p { font-size: 17px; color: var(--muted); max-width: 75ch; }
+.hero .mode { background: #fff; border: 1px solid #c3cfdc; color: var(--navy); }
+h2 { color: var(--navy); font-size: 22px; font-weight: 900; border-bottom: 2px solid var(--cyan); }
+section.cell.text h2 { border-bottom-color: var(--cyan); }
+h3 { color: var(--navy); }
+footer { max-width: 1120px; padding: 0 24px 34px; font-size: 13px; }
+.tbl-wrap, img.fig, .result { border-radius: 14px; border-color: #c3cfdc; box-shadow: 0 1px 2px rgba(1,14,41,.06), 0 10px 26px rgba(1,14,41,.08); }
+.result { border-left: 6px solid var(--cyan); }
+table.dataframe th, .tbl th { background: var(--navy); }
+p.note { border-left-color: var(--cyan); }
+@media (max-width: 860px) { main { padding: 0 16px 40px; } .hero h1 { font-size: 30px; } }
+
+.band{background:#010E29;color:#fff;font-family:Lato,"Helvetica Neue",Arial,sans-serif}
+.band .in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.band .brand{display:flex;line-height:0}
+.band .nav{display:flex;gap:18px;font-size:15px;margin-left:8px;flex-wrap:wrap}
+.band .nav a{color:#c9d6ea;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;line-height:1.5}
+.band .nav a:hover{color:#fff}
+.band .nav a.on{color:#fff;border-bottom-color:#00CCFB}
+.band .mini{margin-left:auto;display:flex;gap:8px}
+.band .mini input{width:180px;padding:8px 12px;border-radius:8px;border:1px solid #2c3c5e;background:#0b1c40;color:#fff;font:inherit;font-size:15px}
+.band .mini input::placeholder{color:#8fa0bd}
+.band .mini button{padding:8px 14px;border-radius:8px;border:0;background:#00CCFB;color:#010E29;font:inherit;font-weight:900;font-size:14px;cursor:pointer}
+.band .mini button:hover{filter:brightness(1.12)}
+.band .mini input,.band .mini button{line-height:20px;height:38px;box-sizing:border-box}
+.band .in{min-height:66px}
+@media(max-width:860px){.band .in{padding:12px 16px}.band .mini{margin-left:0;width:100%}.band .mini input{flex:1;width:auto}
+ .band .nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;gap:16px;white-space:nowrap}}
+</style></head><body><header class='band'><div class='in'><a class='brand' href='http://127.0.0.1:8000/' aria-label='ALT/INFO search'><svg class='logo' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1797 298' width='144.7' height='24' role='img' aria-label='ALT/INFO'><title>ALT/INFO</title><path fill='#ffffff' fill-rule='evenodd' d='M1486,12 1297,12 1297,282 1361,282 1362,174 1475,174 1476,119 1363,119 1361,116 1361,71 1363,69 1486,69ZM1009,12 1009,282 1075,282 1076,121 1190,282 1260,282 1260,12 1193,12 1192,170 1076,12ZM899,12 898,282 967,282 967,12ZM498,12 498,68 575,69 575,282 643,282 643,69 722,68 722,12ZM327,12 326,281 527,282 527,222 396,221 396,12ZM131,12 76,126 5,282 78,282 103,230 223,230 248,282 320,282 310,255 197,12ZM163,86 199,173 198,176 130,176 127,174ZM1632,6 1606,11 1586,18 1570,26 1544,45 1528,62 1517,78 1510,92 1502,115 1498,137 1498,168 1503,193 1517,225 1540,254 1556,267 1584,282 1609,290 1631,293 1666,292 1700,283 1719,274 1743,257 1759,241 1774,219 1786,191 1792,160 1791,127 1787,108 1776,81 1759,56 1743,40 1721,25 1691,12 1661,6ZM1637,67 1652,67 1666,70 1679,75 1689,82 1706,100 1713,113 1717,125 1720,147 1719,162 1715,180 1708,195 1700,206 1689,217 1674,226 1647,232 1626,230 1612,225 1598,216 1586,204 1578,192 1572,178 1568,157 1568,143 1571,124 1577,109 1587,94 1605,78 1619,71Z'/><path fill='#00CCFB' d='M863,4 817,5 717,288 765,288Z'/></svg></a><nav class='nav' aria-label='Sections'><a href='http://127.0.0.1:8000/' class=''>Search</a><a href='http://127.0.0.1:8000/track' class=''>Track record</a><a href='03_event_betas.html' class=''>Event betas</a><a href='http://127.0.0.1:8000/dashboard' class='on'>Dashboard</a><a href='07_monitors.html' class=''>Monitors</a></nav><form class='mini' role='search' onsubmit="var q=this.q.value.trim();if(q)location.href='http://127.0.0.1:8000/#'+encodeURIComponent(q);return false;"><input name='q' type='text' autocomplete='off' spellcheck='false' maxlength='40' placeholder='Ticker or commodity' aria-label='Ticker or commodity'><button type='submit'>Analyse</button></form></div></header><main><div class='hero'><h1>Dashboard: where is the gap largest right now?</h1><p>Gap ranking, calendar of the next events and alerts feed, built from the live data and the calls in the reports.
+The same tables feed the web dashboard; <code>dashboard.html</code> is a static export.</p><span class='mode'>LIVE (data/raw)</span></div><div class='bare'><details class='code'><summary>Setup code</summary><pre>import json, sys
+from pathlib import Path
+import numpy as np, pandas as pd, matplotlib.pyplot as plt
+ROOT = Path.cwd().parent if Path.cwd().name == &quot;notebooks&quot; else Path.cwd()
+sys.path.insert(0, str(ROOT))
+from altinfo import gap, satellite, earnings, scoring, charts, valuation, eventbeta as eb
+from altinfo.charts import NAVY, BLUE, RED, GREY
+charts.style()
+RAW = ROOT / &quot;data&quot; / &quot;raw&quot;
+SNAP = json.load(open(ROOT / &quot;data&quot; / &quot;snapshot_2026-11-09.json&quot;))
+LIVE = (RAW / &quot;prices.csv&quot;).exists()
+print(&quot;Mode:&quot;, &quot;LIVE (data/raw)&quot; if LIVE else &quot;SNAPSHOT (figures of 9 Nov 2026; run scripts/fetch_data.py for live data)&quot;)
+def kalshi_live(series):
+    &quot;&quot;&quot;Open Kalshi markets of a series with a mid price (bid/ask midpoint, else last trade).&quot;&quot;&quot;
+    km = pd.read_csv(RAW / &quot;kalshi_markets.csv&quot;)
+    m = km[km[&quot;series&quot;] == series].copy()
+    mid = (m[&quot;yes_bid_dollars&quot;] + m[&quot;yes_ask_dollars&quot;]) / 2
+    tight = (m[&quot;yes_ask_dollars&quot;] - m[&quot;yes_bid_dollars&quot;]).le(0.10) &amp; m[&quot;yes_ask_dollars&quot;].gt(0)
+    m[&quot;mid&quot;] = mid.where(tight, m[&quot;last_price_dollars&quot;])
+    return m
+def poly_live(pattern):
+    pm = pd.read_csv(RAW / &quot;polymarket_markets.csv&quot;)
+    return pm[pm.question.str.contains(pattern, case=False, na=False, regex=True) &amp; (pm.closed != True)].sort_values(&quot;volume&quot;, ascending=False)
+def live_calls(today=&quot;2026-11-10&quot;):
+    &quot;&quot;&quot;The calls registered in the reports, with the market probability updated to the latest live data.&quot;&quot;&quot;
+    calls = pd.DataFrame(SNAP[&quot;calls&quot;]).assign(asset=[&quot;NVDA&quot;, &quot;BRENT&quot;], date=[&quot;2026-11-17&quot;, &quot;2026-11-30&quot;],
+                                                confidence=&quot;medium&quot;, date_asof=pd.Timestamp(today))
+    calls[&quot;market_week_ago&quot;] = [SNAP[&quot;nvda&quot;][&quot;real&quot;][&quot;polymarket_beat_history&quot;][&quot;2026-11-03&quot;], np.nan]
+    if LIVE:
+        cd = pd.read_csv(RAW / &quot;kalshi_candles.csv&quot;, parse_dates=[&quot;date&quot;])
+        cd = cd[cd.ticker.str.startswith(&quot;KXBRENTMON-26NOV30&quot;)].copy()
+        cd[&quot;strike&quot;] = cd.ticker.str.extract(r&quot;-T([\d.]+)$&quot;)[0].astype(float)
+        daily = cd.dropna(subset=[&quot;price&quot;]).groupby(&quot;date&quot;).apply(lambda d: gap.ladder_prob_above(d.strike, d.price, 96), include_groups=False)
+        bm = kalshi_live(&quot;KXBRENTMON&quot;).dropna(subset=[&quot;floor_strike&quot;, &quot;mid&quot;])
+        calls.loc[calls.asset == &quot;BRENT&quot;, &quot;market&quot;] = gap.ladder_prob_above(bm.floor_strike, bm.mid, 96)
+        calls.loc[calls.asset == &quot;BRENT&quot;, &quot;market_week_ago&quot;] = daily.loc[:pd.Timestamp(today) - pd.Timedelta(days=7)].iloc[-1]
+        nb_ = poly_live(r&quot;N[Vv][Ii][Dd][Ii][Aa].*beat|NVDA.*beat&quot;)
+        if len(nb_):
+            calls.loc[calls.asset == &quot;NVDA&quot;, &quot;market&quot;] = float(nb_[&quot;price&quot;].iloc[0])
+    return calls
+def load_prices():
+    p = pd.read_csv(RAW / &quot;prices.csv&quot;)
+    p[&quot;date&quot;] = pd.to_datetime(p[&quot;date&quot;], format=&quot;mixed&quot;).dt.normalize()
+    return p.pivot_table(index=&quot;date&quot;, columns=&quot;ticker&quot;, values=&quot;close&quot;).sort_index()</pre></details></div><section class='cell'><details class='code'><summary>Code</summary><pre>from altinfo import dashboard
+today = pd.Timestamp(&quot;2026-11-10&quot;)
+calls = live_calls(today)
+rank = dashboard.gap_ranking(calls)
+view = rank[[&quot;asset&quot;, &quot;event&quot;, &quot;date&quot;, &quot;ours&quot;, &quot;market&quot;, &quot;gap_pts&quot;, &quot;label&quot;, &quot;confidence&quot;, &quot;change_1w_pts&quot;]].copy()
+for c in [&quot;ours&quot;, &quot;market&quot;]:
+    view[c] = view[c].map(&quot;{:.0%}&quot;.format)
+for c in [&quot;gap_pts&quot;, &quot;change_1w_pts&quot;]:
+    view[c] = view[c].map(&quot;{:+.0f}&quot;.format)
+view.columns = [&quot;Asset&quot;, &quot;Event&quot;, &quot;Date&quot;, &quot;Our view&quot;, &quot;Market&quot;, &quot;Gap, pts&quot;, &quot;Label&quot;, &quot;Confidence&quot;, &quot;Market 1w, pts&quot;]
+view</pre></details><div class='tbl-wrap'><table class='dataframe'><thead><tr><th class=''>Asset</th><th class=''>Event</th><th class=''>Date</th><th class='n'>Our view</th><th class='n'>Market</th><th class='n'>Gap, pts</th><th class=''>Label</th><th class=''>Confidence</th><th class='n'>Market 1w, pts</th></tr></thead><tbody><tr><td class='nw'>BRENT</td><td class=''>Brent above $95.99 on 30 Nov 2026</td><td class='nw'>2026-11-30</td><td class='n'>62%</td><td class='n'>26%</td><td class='n'>+36</td><td class='nw'>UNDER-PRICED</td><td class='nw'>medium</td><td class='n'>-37</td></tr><tr><td class='nw'>NVDA</td><td class=''>NVDA Q3 FY27 EPS above consensus (17 Nov 2026)</td><td class='nw'>2026-11-17</td><td class='n'>90%</td><td class='n'>94%</td><td class='n'>-4</td><td class='nw'>OVER-PRICED</td><td class='nw'>medium</td><td class='n'>+4</td></tr></tbody></table></div><p class='note'><b>How to read it.</b> The gap ranking that heads the dashboard: for each live call, our probability, the market&#x27;s, the gap in points and how much the market moved in the last week. The biggest gaps come first.</p></section><section class='cell'><details class='code'><summary>Code</summary><pre>cal = dashboard.upcoming(today, days=14, live_calls=list(calls.asset))
+cal.assign(date=cal.date.dt.strftime(&quot;%a %d %b&quot;))[[&quot;date&quot;, &quot;event&quot;, &quot;names&quot;, &quot;group&quot;]].rename(
+    columns={&quot;date&quot;: &quot;Date&quot;, &quot;event&quot;: &quot;Event&quot;, &quot;names&quot;: &quot;Names&quot;, &quot;group&quot;: &quot;Sector&quot;})</pre></details><div class='tbl-wrap'><table class='dataframe'><thead><tr><th class=''>Date</th><th class=''>Event</th><th class=''>Names</th><th class=''>Sector</th></tr></thead><tbody><tr><td class='nw'>Thu 12 Nov</td><td class=''>EIA weekly stocks</td><td class=''>Brent crude, WTI crude</td><td class='nw'>Energy</td></tr><tr><td class='nw'>Mon 16 Nov</td><td class=''>USDA Crop Progress</td><td class=''>Corn, Wheat, Soybeans</td><td class='nw'>Agriculture</td></tr><tr><td class='nw'>Tue 17 Nov</td><td class=''>Q3 FY2027 results (after close)</td><td class='nw'>NVIDIA</td><td class='nw'>Semiconductors</td></tr><tr><td class='nw'>Mon 23 Nov</td><td class=''>USDA Crop Progress</td><td class=''>Corn, Wheat, Soybeans</td><td class='nw'>Agriculture</td></tr><tr><td class='nw'>Sun 29 Nov</td><td class='nw'>OPEC+ meeting</td><td class='nw'>Brent crude</td><td class='nw'>Energy</td></tr><tr><td class='nw'>Mon 30 Nov</td><td class=''>Kalshi month-end settlement</td><td class='nw'>Brent crude</td><td class='nw'>Energy</td></tr><tr><td class='nw'>Tue 01 Dec</td><td class=''>GTC Washington keynote</td><td class='nw'>NVIDIA</td><td class='nw'>Semiconductors</td></tr></tbody></table></div><p class='note'><b>How to read it.</b> Key dates in the next two weeks for every company and commodity we cover, plus the later dates of the two live calls: results, official inventory and crop reports, OPEC+ meetings and settlement of prediction market contracts. The same report for several names (for example USDA Crop Progress) is one row.</p></section><section class='cell'><details class='code'><summary>Code</summary><pre>jumps = None
+if LIVE:
+    ph = pd.read_csv(RAW / &quot;polymarket_history.csv&quot;, parse_dates=[&quot;date&quot;])
+    ph = ph[ph.key.fillna(&quot;&quot;) != &quot;&quot;]
+    from altinfo.monitors import market_jumps
+    jumps = market_jumps(ph[ph.date &gt;= today - pd.Timedelta(days=60)], threshold_pts=10)
+    px = load_prices()
+else:
+    px = None
+alerts = dashboard.alerts_feed(rank, jumps, px, since=today - pd.Timedelta(days=30))
+alerts.head(15)</pre></details><div class='tbl-wrap'><table class='dataframe'><thead><tr><th class=''>Date</th><th class=''>Type</th><th class=''>Asset</th><th class=''>Text</th></tr></thead><tbody><tr><td class='nw'>2026-11-10</td><td class='nw'>Gap</td><td class='nw'>Brent crude</td><td class=''>Brent above $95.99 on 30 Nov 2026: gap +36 pts, under-priced</td></tr><tr><td class='nw'>2026-11-05</td><td class='nw'>Price</td><td class='nw'>NVIDIA</td><td class=''>closed -9.3% on the day (NVDA)</td></tr><tr><td class='nw'>2026-11-04</td><td class='nw'>Price</td><td class='nw'>Brent crude</td><td class=''>closed -8.7% on the day (BZ=F)</td></tr><tr><td class='nw'>2026-11-04</td><td class='nw'>Price</td><td class='nw'>WTI crude</td><td class=''>closed -8.3% on the day (CL=F)</td></tr><tr><td class='nw'>2026-10-30</td><td class='nw'>Price</td><td class='nw'>NVIDIA</td><td class=''>closed -4.2% on the day (NVDA)</td></tr><tr><td class='nw'>2026-10-22</td><td class='nw'>Price</td><td class='nw'>NVIDIA</td><td class=''>closed -4.4% on the day (NVDA)</td></tr><tr><td class='nw'>2026-10-21</td><td class='nw'>Price</td><td class='nw'>WTI crude</td><td class=''>closed -4.6% on the day (CL=F)</td></tr></tbody></table></div><p class='note'><b>How to read it.</b> The alerts a client would have received in the last month: a gap above 5 points, a prediction market moving 10 points in a day, or a price moving more than 4% in a day.</p></section><section class='cell'><details class='code'><summary>Code</summary><pre>sparks = {}
+km = pd.read_csv(RAW / &quot;kalshi_markets.csv&quot;) if LIVE else None
+pm = pd.read_csv(RAW / &quot;polymarket_markets.csv&quot;) if LIVE else None
+bh = SNAP[&quot;nvda&quot;][&quot;real&quot;][&quot;polymarket_beat_history&quot;]
+sparks[&quot;NVDA&quot;] = [v * 100 for v in bh.values()]
+if LIVE:
+    cd = pd.read_csv(RAW / &quot;kalshi_candles.csv&quot;, parse_dates=[&quot;date&quot;])
+    cd = cd[cd.ticker.str.startswith(&quot;KXBRENTMON-26NOV30&quot;)].copy()
+    cd[&quot;strike&quot;] = cd.ticker.str.extract(r&quot;-T([\d.]+)$&quot;)[0].astype(float)
+    daily = cd.dropna(subset=[&quot;price&quot;]).groupby(&quot;date&quot;).apply(lambda d: gap.ladder_prob_above(d.strike, d.price, 96), include_groups=False)
+    sparks[&quot;BRENT&quot;] = list(daily.values * 100)
+cover = dashboard.coverage_table(px, km, pm, calls, today) if px is not None else None
+from altinfo.config import HOST, PORT
+APP = f&quot;http://{HOST}:{PORT}/&quot;   # the live search app (python server/app.py)
+NAVD = [(&quot;Search&quot;, APP), (&quot;Track record&quot;, APP + &quot;track&quot;), (&quot;Event betas&quot;, &quot;notebooks/03_event_betas.html&quot;),
+        (&quot;Dashboard&quot;, APP + &quot;dashboard&quot;), (&quot;Monitors&quot;, &quot;notebooks/07_monitors.html&quot;)]
+from altinfo.coverage import COVERAGE
+links = {k: f&quot;signals/{k}.html&quot; for k in COVERAGE}
+html = dashboard.to_html(rank, cal, alerts, cover, sparks, asof=f&quot;{today:%d %B %Y}&quot;, nav=NAVD, signal_links=links)
+(ROOT / &quot;dashboard.html&quot;).write_text(html)
+print(&quot;written dashboard.html&quot;)</pre></details><div class='result'><div>written dashboard.html</div></div><p class='note'><b>How to read it.</b> Writes the dashboard page (dashboard.html) from the tables above. The page has filters by sector, region and size of the gap, and each name links to its signal page.</p></section><section class='cell text'><h2>Signal pages</h2>
+<p>One page per covered name with the history of each index, how the prediction market odds moved, attention on X and
+the supply chain map with live alerts, linked from the dashboard (click a name).</p></section><section class='cell'><details class='code'><summary>Code</summary><pre>from altinfo import signals
+(ROOT / &quot;signals&quot;).mkdir(exist_ok=True)
+REPORTS = {&quot;NVDA&quot;: &quot;../notebooks/01_nvda_preview.html&quot;, &quot;BRENT&quot;: &quot;../notebooks/02_brent_preview.html&quot;}
+NAVS = [(l, u if u.startswith(&quot;http&quot;) else &quot;../&quot; + u) for l, u in NAVD]
+rows = []
+for k in COVERAGE:
+    sig = signals.collect(k, ROOT, today)
+    (ROOT / &quot;signals&quot; / f&quot;{k}.html&quot;).write_text(signals.page_html(k, sig, NAVS, REPORTS.get(k), f&quot;{today:%d %B %Y}&quot;))
+    rows.append({&quot;Name&quot;: COVERAGE[k][&quot;name&quot;], &quot;Charts&quot;: len(sig[&quot;charts&quot;]), &quot;Places on the map&quot;: len(COVERAGE[k][&quot;sites&quot;]),
+                 &quot;Live alerts&quot;: len(sig[&quot;alerts&quot;]), &quot;Page&quot;: f&quot;signals/{k}.html&quot;})
+pd.DataFrame(rows)</pre></details><div class='tbl-wrap'><table class='dataframe'><thead><tr><th class=''>Name</th><th class='n'>Charts</th><th class='n'>Places on the map</th><th class='n'>Live alerts</th><th class=''>Page</th></tr></thead><tbody><tr><td class='nw'>NVIDIA</td><td class='n'>5</td><td class='n'>10</td><td class='n'>0</td><td class=''>signals/NVDA.html</td></tr><tr><td class='nw'>Brent crude</td><td class='n'>4</td><td class='n'>7</td><td class='n'>0</td><td class=''>signals/BRENT.html</td></tr><tr><td class='nw'>WTI crude</td><td class='n'>2</td><td class='n'>4</td><td class='n'>0</td><td class='nw'>signals/WTI.html</td></tr><tr><td class='nw'>Copper</td><td class='n'>1</td><td class='n'>12</td><td class='n'>1</td><td class=''>signals/COPPER.html</td></tr><tr><td class='nw'>Gold</td><td class='n'>1</td><td class='n'>6</td><td class='n'>0</td><td class=''>signals/GOLD.html</td></tr><tr><td class='nw'>Corn</td><td class='n'>1</td><td class='n'>5</td><td class='n'>0</td><td class=''>signals/CORN.html</td></tr><tr><td class='nw'>Wheat</td><td class='n'>1</td><td class='n'>5</td><td class='n'>0</td><td class=''>signals/WHEAT.html</td></tr><tr><td class='nw'>Soybeans</td><td class='n'>1</td><td class='n'>4</td><td class='n'>0</td><td class=''>signals/SOYBEANS.html</td></tr><tr><td class='nw'>Coffee</td><td class='n'>1</td><td class='n'>4</td><td class='n'>0</td><td class=''>signals/COFFEE.html</td></tr><tr><td class='nw'>Sugar</td><td class='n'>1</td><td class='n'>4</td><td class='n'>0</td><td class=''>signals/SUGAR.html</td></tr></tbody></table></div><p class='note'><b>How to read it.</b> One signal page per covered name: index histories, prediction market odds, attention and the supply chain map. The table counts what each page shows; live alerts are earthquakes within 100 km or fires within 30 km of a place.</p></section><section class='cell text'><h2>Free and Institutional tiers</h2>
+<p>What each tier sees. The free tier never shows live satellite readings; reports are released to it after each event.</p></section><section class='cell'><details class='code'><summary>Code</summary><pre>from altinfo import tiers
+tiers.table()</pre></details><div class='tbl-wrap'><table class='dataframe'><thead><tr><th class=''>Feature</th><th class=''>Free</th><th class=''>Institutional</th></tr></thead><tbody><tr><td class=''>Earnings and commodity calendar</td><td class='nw'>Yes</td><td class='nw'>Yes</td></tr><tr><td class=''>Headline prediction market odds</td><td class='nw'>Yes</td><td class='nw'>Yes</td></tr><tr><td class='nw'>Attention on X</td><td class='nw'>Yes</td><td class='nw'>Yes</td></tr><tr><td class='nw'>Ticker search</td><td class=''>Basic: price, markets, attention</td><td class=''>Full: satellite indices, supply chain, gap</td></tr><tr><td class='nw'>Event reports</td><td class=''>Released after each event</td><td class=''>Live, before each event</td></tr><tr><td class=''>Dashboard and gap ranking</td><td class='nw'>No</td><td class='nw'>Yes</td></tr><tr><td class=''>Live satellite readings</td><td class='nw'>Never</td><td class='nw'>Yes</td></tr><tr><td class=''>Personalized monitors</td><td class='nw'>No</td><td class=''>Yes, private to each client</td></tr><tr><td class=''>Custom sites to track</td><td class='nw'>No</td><td class='nw'>Yes</td></tr></tbody></table></div><p class='note'><b>How to read it.</b> What each tier gets. Free users see the calendar, headline odds, attention and a basic search; live satellite readings, the gap ranking and monitors are for institutional clients only.</p></section></main><footer>Generated from the notebook of the same name. Prototype inputs are labelled; not investment advice.</footer></body></html>

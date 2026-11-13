@@ -1,0 +1,39 @@
+Downloaded 2026-11-10 13:00 UTC
+connectivity: Kalshi OK, Polymarket OK
+prices HG=F: 532 days
+prices GC=F: 532 days
+prices NG=F: 532 days
+prices ZC=F: 531 days
+prices ZW=F: 531 days
+prices ZS=F: 531 days
+prices KC=F: 532 days
+prices SB=F: 532 days
+prices FCX: 529 days
+prices SCCO: 529 days
+prices TECK: 529 days
+prices COPX: 529 days
+prices NEM: 529 days
+prices: 28 reused, 13 downloaded
+usgs earthquakes M4.5+ last 30 days: 664
+kalshi fed: 15446 candles, 70 contracts
+kalshi series matched: 141 -> KXNDKOIL, KXEIACRUDEW, KXBOEGOLD, KXVENEZCRUDE, KXSAUDICRUDE, KXOKOIL, KXRUCRUDEX, KXAKCRUDEOIL, KXIRANCRUDE, KXTXOIL, KXH200CHINA, KXNMCOIL, KXEIACRUDEXPM, KXCOPPER15M, KXWTIMAX, KXBRENTWEX, KXWTIW, KXGOLDD, KXGOLD15M, KXGOLDYEAR, KXWTIE, KXGOLDDIRY, KXWTIMIN, KXWTIEU, KXBRENTD
+kalshi open markets in those series: 1662
+kalshi candles for 219 markets in KXBRENTMON, KXBRENTW, KXBRENTD, KXHORMUZNORM, KXHORMUZWEEKLY, KXMAXSHIPSHORMUZ, KXEARNINGSMENTIONNVDA, KXNVDAMENTION, KXWTIMAX, KXWTIMIN
+kalshi candles: 6202
+polymarket us_invades_iran: found
+polymarket iran_regime_falls: found
+polymarket hormuz_normal: found
+polymarket china_invades_taiwan: found
+polymarket us_recession_2026: found
+polymarket search 'nvidia earnings': 1 events
+polymarket search 'nvidia': 50 events
+polymarket search 'nvda': 13 events
+polymarket search 'wti': 4 events
+polymarket search 'crude oil': 6 events
+polymarket search 'brent': 34 events
+polymarket search 'iran ceasefire': 32 events
+polymarket search 'hormuz': 32 events
+polymarket search 'iran agreement': 4 events
+polymarket search 'copper': 1 events
+polymarket search 'gold': 50 events
+polymarket: 2643 markets listed, history for 65 (9729 points)

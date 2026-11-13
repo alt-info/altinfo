@@ -1,0 +1,37 @@
+hub,tank,date,capacity,outer,inner
+"Cushing, US",CUS1,4 weeks ago,0.331,21.94,14.919
+"Cushing, US",CUS2,4 weeks ago,1.152,22.33,14.658
+"Cushing, US",CUS3,4 weeks ago,0.858,21.68,14.245
+"Cushing, US",CUS1,now,0.331,22.51,13.067
+"Cushing, US",CUS2,now,1.152,21.65,14.288
+"Cushing, US",CUS3,now,0.858,25.62,16.301
+US Gulf Coast,US 1,4 weeks ago,0.759,20.62,9.626
+US Gulf Coast,US 2,4 weeks ago,0.304,24.51,11.71
+US Gulf Coast,US 1,now,0.759,25.5,12.291
+US Gulf Coast,US 2,now,0.304,19.64,10.02
+Rotterdam (ARA),ROT1,4 weeks ago,0.666,24.88,12.833
+Rotterdam (ARA),ROT2,4 weeks ago,0.883,19.27,10.28
+Rotterdam (ARA),ROT3,4 weeks ago,1.165,20.55,10.526
+Rotterdam (ARA),ROT1,now,0.666,21.27,11.991
+Rotterdam (ARA),ROT2,now,0.883,25.52,13.582
+Rotterdam (ARA),ROT3,now,1.165,18.15,9.24
+"Fujairah, UAE",FUJ1,4 weeks ago,0.615,23.03,13.426
+"Fujairah, UAE",FUJ2,4 weeks ago,0.682,18.84,10.86
+"Fujairah, UAE",FUJ3,4 weeks ago,0.871,21.04,12.197
+"Fujairah, UAE",FUJ4,4 weeks ago,0.834,19.57,12.073
+"Fujairah, UAE",FUJ1,now,0.615,22.03,17.325
+"Fujairah, UAE",FUJ2,now,0.682,19.59,12.482
+"Fujairah, UAE",FUJ3,now,0.871,21.07,13.869
+"Fujairah, UAE",FUJ4,now,0.834,21.28,13.262
+China east coast,CHI1,4 weeks ago,0.99,18.43,6.564
+China east coast,CHI2,4 weeks ago,0.898,18.54,7.533
+China east coast,CHI3,4 weeks ago,0.685,20.16,6.899
+China east coast,CHI1,now,0.99,20.57,7.986
+China east coast,CHI2,now,0.898,24.45,11.239
+China east coast,CHI3,now,0.685,19.05,8.6
+Japan and Korea,JAP1,4 weeks ago,1.109,25.83,13.0
+Japan and Korea,JAP2,4 weeks ago,0.745,23.07,11.784
+Japan and Korea,JAP3,4 weeks ago,0.961,20.65,9.467
+Japan and Korea,JAP1,now,1.109,21.17,10.871
+Japan and Korea,JAP2,now,0.745,21.4,11.109
+Japan and Korea,JAP3,now,0.961,22.96,11.454

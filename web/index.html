@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALT/INFO</title>
+{{FAVICON}}
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+<header class="band">
+  <div class="in">
+    <a class="brand" href="/" aria-label="ALT/INFO home">{{LOGO}}</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="/" id="nav-search" class="on" aria-current="page">Search</a>
+      <a href="/track" id="nav-track">Track record</a>
+      <a href="/files/notebooks/03_event_betas.html">Event betas</a>
+      <a href="/dashboard" id="nav-dash">Dashboard</a>
+      <a href="/files/notebooks/07_monitors.html">Monitors</a>
+    </nav>
+    <form class="mini" id="mini" role="search">
+      <input id="q2" name="q" type="text" autocomplete="off" spellcheck="false" maxlength="40" placeholder="Ticker or commodity" aria-label="Ticker or commodity">
+      <button type="submit">Analyse</button>
+    </form>
+  </div>
+</header>
+
+<main>
+  <!-- 1. start -->
+  <section id="start" class="start">
+    <div class="mark">{{LOGO_DARK}}</div>
+    <h1>Type a ticker. See what the market has not priced in.</h1>
+    <p class="lead">We compare what is physically happening with what investors expect, and tell you how wide the gap is.</p>
+    <form id="search" class="search" role="search">
+      <input id="q" name="q" type="text" autocomplete="off" spellcheck="false" maxlength="40" placeholder="NVDA, Brent, copper, AAPL…" aria-label="Ticker or commodity" autofocus>
+      <button type="submit">Analyse</button>
+    </form>
+    <div id="chips" class="chips" aria-label="Covered in depth"></div>
+  </section>
+
+  <!-- 2. loading -->
+  <section id="loading" class="loading" hidden aria-live="polite">
+    <h2 id="loadtitle">Analysing</h2>
+    <ol id="steps" class="steps"></ol>
+    <p id="loadnote" class="loadnote"></p>
+  </section>
+
+  <!-- 3. error -->
+  <section id="error" class="errorbox" hidden role="alert">
+    <h2 id="errtitle"></h2>
+    <p id="errdetail"></p>
+    <button id="retry" type="button">Try another name</button>
+  </section>
+
+  <!-- 4. result -->
+  <section id="result" hidden></section>
+
+  <!-- 5. dashboard: the saved tickers ranked by gap -->
+  <section id="dash" hidden>
+    <div class="trhead">
+      <div>
+        <h1>Where is the gap largest right now?</h1>
+        <p class="lead">Your saved tickers, ranked by the gap between our view and the market. Add or remove tickers here:
+          the list is the same as in the track record.</p>
+      </div>
+      <form id="dadd" class="addform">
+        <input id="daddq" type="text" autocomplete="off" spellcheck="false" maxlength="40" placeholder="Add a ticker or commodity" aria-label="Ticker to save">
+        <button type="submit">Save</button>
+      </form>
+    </div>
+    <p id="daddmsg" class="addmsg" role="status"></p>
+    <div class="trbar"><span id="dcount"></span><button id="drefresh" type="button" class="ghost">Update all</button></div>
+    <div id="dmap" class="card dmap"></div>
+    <div class="grid">
+      <div class="card"><h3>Next three weeks</h3><ul id="devents" class="tl"></ul></div>
+      <div class="card"><h3>Alerts</h3><ul id="dalerts" class="al"></ul></div>
+    </div>
+    <div class="card"><h3>Your tickers</h3><div id="dtable"></div></div>
+  </section>
+
+  <!-- 6. track record: saved tickers -->
+  <section id="track" hidden>
+    <div class="trhead">
+      <div>
+        <h1>Track record</h1>
+        <p class="lead">The tickers you follow. Every analysis is stored, so you can see how our view, the market and the gap
+          moved since you saved it. The same list feeds the dashboard.</p>
+      </div>
+      <form id="addform" class="addform">
+        <input id="addq" type="text" autocomplete="off" spellcheck="false" maxlength="40" placeholder="Add a ticker or commodity" aria-label="Ticker to save">
+        <button type="submit">Save</button>
+      </form>
+    </div>
+    <p id="addmsg" class="addmsg" role="status"></p>
+    <div class="trbar"><span id="trcount"></span><button id="refreshall" type="button" class="ghost">Update all</button></div>
+    <div id="watch" class="watch"></div>
+    <h2 class="sec">Calls from the event reports</h2>
+    <p class="sub">Probabilities written in the reports before each event, scored once the outcome is known.</p>
+    <div id="calls" class="card"></div>
+  </section>
+</main>
+
+<footer class="foot">Prototype built on public data. Satellite inputs are illustrative where marked. Not investment advice.</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
