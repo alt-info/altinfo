@@ -136,18 +136,42 @@ calls, not the result of a real imagery analysis.
 * Build-out index = Σ GW × stage weight / Σ GW, weights 15 / 40 / 60 / 85 / 100%.
 * Event beta: r = α + β · Δp / 10 + ε, so β is the % return for a 10 point rise in the odds.
 
-## Not implemented in the prototype, and why
+## The business proposal and this prototype
 
-| Feature in the product description | Why it is not live here | What the prototype does instead |
+The business proposal describes the full product, built during the pilot and funded by the seed round. This
+repository is the working prototype behind it. The engine, the gap, the track record and the interfaces are real
+and run on live public data; the parts that need paid data, an imagery team or a long history of events are
+simplified, and every input is labelled `real`, `reported` or `prototype` in the app and in the reports.
+
+### Method: proposal against prototype
+
+| Step in the proposal | In the full product | In this prototype |
 |---|---|---|
-| Satellite imagery (campus stages, tank shadows, mine and crop activity, radar, night infrared) | Paid imagery licences (Planet, Maxar, Airbus) and an imagery team | Illustrative inputs in `data/prototype`; the code turns them into the indices exactly as it would real readings |
-| Ship tracking (AIS): tanker flows, ships waiting, ship to ship transfers | Paid feeds (Kpler, Spire, MarineTraffic) | Figures copied from Kpler as printed in the Brent report |
-| Attention on X and Stocktwits | X API access is paid; Stocktwits closed its API to new users | Topic shares are prototype outputs; Stocktwits share as printed in the report |
-| News feed linked to signals | Licensed news APIs | Not included |
-| Analyst consensus history, bank forecasts, physical cargo premiums | Licensed data (LSEG, FactSet, Bloomberg, Platts, Argus) | Yahoo Finance consensus and multiples; Murban price as a proxy for Gulf cargo premiums; EIA outlook |
-| Kalshi crop contracts | Listed in April 2026 and withdrawn by June 2026 | Futures prices; the code picks crop contracts up automatically if they are relisted |
-| Alerts by email or in the app, user accounts, tier enforcement | Needs a server, a database and logins | Alerts are tables; tiers are a flag that strips the ticker page |
-| Live updating dashboard | Needs a scheduled job and hosting | Static export rebuilt by `fetch_data.py` then `build_notebooks.py` |
+| Evidence indices | Computer vision on imagery (cars, trucks, ships, campus stages, tank shadows), AIS ship tracking, seasonally adjusted z scores | The index maths runs on illustrative inputs (`satellite.py`: build-out index, tank fill from shadows); Hormuz flows and ships waiting as published; live free feeds for weather (rain against the 10 year normal), fires, earthquakes and EIA oil stocks against the 5 year average |
+| Our probability, earnings | Logistic regression on the evidence indices, past surprises and revisions | Historical base rate with Laplace's rule: (beats + 1) / (reports + 2) over the last 8 reports (NVIDIA: 90%) |
+| Our probability, commodities | Scenario model on observed flows and stocks | Same idea, implemented: three weighted scenarios give the probability of closing above each strike (Brent above $96: 62%) |
+| Calibration | Platt scaling or isotonic regression on past events | Not yet: needs dozens of resolved events |
+| Market probability | Liquidity filter, long shot bias adjustment, cross check with option implied probabilities | Liquidity and spread filter (`quality`); when Kalshi and Polymarket price the same question, their average weighted by traded volume. No long shot or options adjustment yet |
+| Neutral yardstick | | Added in the prototype: what the price itself implies (random walk with 60 day volatility), compared with every ladder of price contracts |
+| Attention | X and Stocktwits post volume, NLP pipeline (LDA, dynamic topics, TF IDF and word2vec sentiment, event dictionaries) | News attention from GDELT (coverage against its 3 month average, tone); when GDELT does not answer, Google News and Yahoo headlines with a word list tone. Topic shares on the signal pages are illustrative |
+| The gap | Weighted up when evidence is strong and attention is low | Our probability minus the market's, labelled priced in under 3 points, plus a confidence score from 0 to 100 with its reasons |
+| Event studies and backtest | Market model and Fama French abnormal returns regressed on the gap; walk forward backtest with costs, Sharpe and information ratios | Event betas instead: returns regressed on daily changes in prediction market probabilities, Newey West errors (`eventbeta.py`, notebook 03). The backtest needs a longer record of calls |
+| Forecast evaluation | Brier score, log loss and calibration curves next to the market's | Brier score of every registered call, ours and the market's (`scoring.py`, Track record) |
+| Kalshi word markets | Our probability from past earnings call transcripts | Contracts are recognised (`mention`) and shown, without a probability of our own |
+| Learning from outcomes | Models refit after each event | Calls are scored after each event; nothing is refit yet |
+
+### Product features: proposal against prototype
+
+| Feature in the proposal | Why it is not live here | What the prototype does instead |
+|---|---|---|
+| Satellite imagery (campus stages, tank shadows, mine and crop activity) | Paid imagery licences (Planet, Maxar, Airbus) and an imagery team | Illustrative inputs in `data/prototype`; the code turns them into indices exactly as it would real readings |
+| Ship tracking (AIS): tanker flows, ships waiting | Paid feeds (Kpler, Spire, MarineTraffic) | Figures as published in the Brent report |
+| Attention on X and Stocktwits | X API access is paid; Stocktwits closed its API to new users | News attention from GDELT and headlines (see above) |
+| Analyst consensus history, bank forecasts, cargo premiums | Licensed data (LSEG, FactSet, Bloomberg, Platts, Argus) | Yahoo Finance consensus and multiples; Murban as a proxy for Gulf premiums; EIA outlook |
+| Prediction market data for resale | Kalshi and Polymarket data must be licensed (ICE, Tradeweb) to be redistributed | Read only use of the public APIs for research |
+| Kalshi crop contracts | Listed in April 2026 and withdrawn by June 2026 | Futures prices; crop contracts are picked up automatically if relisted |
+| User accounts, Free and Institutional tiers, email alerts | Needs logins, payments and hosting | One local user: saved tickers, stored analyses and in app alerts on the dashboard; tiers are a flag on the static ticker pages |
+| Hosted, always on service | Needs hosting and scheduled jobs | Runs locally (`python server/app.py`); every search refreshes the data, with a cache |
 
 ## Legal note
 
